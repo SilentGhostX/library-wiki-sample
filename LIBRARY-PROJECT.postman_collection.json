@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "91bf86d4-fc40-4f80-8768-ba967650016d",
+		"name": "LIBRARY-PROJECT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6534673"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"item": [
+				{
+					"name": "CREATE NEW BOOK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"title\": \"The Chronicles of Narnia\",\r\n    \"author\": \"C.S. Lewis\",\r\n    \"category\": \"Fantasy\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE COLLECTION OF BOOKS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"title\": \"The Chronicles of Narnia\",\r\n    \"author\": \"C.S. Lewis\",\r\n    \"category\": \"Fantasy\"\r\n  },\r\n  {\r\n    \"title\": \"The Hitchhiker's Guide to the Galaxy\",\r\n    \"author\": \"Douglas Adams\",\r\n    \"category\": \"Science Fiction\"\r\n  },\r\n  {\r\n    \"title\": \"Moby Dick\",\r\n    \"author\": \"Herman Melville\",\r\n    \"category\": \"Classic\"\r\n  },\r\n  {\r\n    \"title\": \"The Alchemist\",\r\n    \"author\": \"Paulo Coelho\",\r\n    \"category\": \"Fiction\"\r\n  },\r\n  {\r\n    \"title\": \"Brave New World\",\r\n    \"author\": \"Aldous Huxley\",\r\n    \"category\": \"Science Fiction\"\r\n  },\r\n  {\r\n    \"title\": \"The Da Vinci Code\",\r\n    \"author\": \"Dan Brown\",\r\n    \"category\": \"Thriller\"\r\n  },\r\n  {\r\n    \"title\": \"The Picture of Dorian Gray\",\r\n    \"author\": \"Oscar Wilde\",\r\n    \"category\": \"Classic\"\r\n  },\r\n  {\r\n    \"title\": \"The Hobbit\",\r\n    \"author\": \"J.R.R. Tolkien\",\r\n    \"category\": \"Fantasy\"\r\n  },\r\n  {\r\n    \"title\": \"The Hunger Games\",\r\n    \"author\": \"Suzanne Collins\",\r\n    \"category\": \"Young Adult\"\r\n  },\r\n  {\r\n    \"title\": \"The Girl with the Dragon Tattoo\",\r\n    \"author\": \"Stieg Larsson\",\r\n    \"category\": \"Mystery\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/books/collection",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"collection"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SEARCH",
+			"item": [
+				{
+					"name": "SIMPLE SEARCH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/search?q=Hobbit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Hobbit"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH WITH PAGINATION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/search?q=*&page=1&size=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "*"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH WITH WILDCARD",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/search?q=*the*",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "*the*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH BASED ON FIELDS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/search?q=Fantasy&fields=category,author",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Fantasy"
+								},
+								{
+									"key": "fields",
+									"value": "category,author"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH AND ORDER BY SPECIFIC FIELD",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/search?q=Fantasy&orderBy=title",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Fantasy"
+								},
+								{
+									"key": "orderBy",
+									"value": "title"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH AND ORDER BY SPECIFIC FIELD DESC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/search?q=*&orderBy=category&order=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "*"
+								},
+								{
+									"key": "orderBy",
+									"value": "category"
+								},
+								{
+									"key": "order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LIST",
+			"item": [
+				{
+					"name": "LIST OF ALL BOOKS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "INDEX",
+			"item": [
+				{
+					"name": "LAUNCH INDEX OF UNINDEX BOOKS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/index",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CLEAR AND INDEX ALL BOOKS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books/clear-and-index",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"clear-and-index"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
